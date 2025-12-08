@@ -1,0 +1,152 @@
+### Maven ###
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### Gradle (caso migre futuramente) ###
+.gradle
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### Spring Boot ###
+HELP.md
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+.idea_modules/
+
+### Eclipse ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.loadpath
+.recommenders
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+### VS Code ###
+.vscode/
+.code-workspace
+
+### Arquivos de Ambiente e Configuração Local ###
+.env
+.env.local
+.env.*.local
+application-local.yml
+application-local.yaml
+application-local.properties
+*-local.yml
+*-local.yaml
+*-local.properties
+
+### Logs ###
+*.log
+logs/
+log/
+*.log.*
+*.gz
+
+### Banco de Dados Local ###
+*.db
+*.sqlite
+*.sqlite3
+*.h2.db
+/data/
+/db/
+
+### Segurança - NUNCA COMMITAR ###
+*.key
+*.pem
+*.p12
+*.jks
+*.keystore
+*.truststore
+secrets/
+credentials/
+*.crt
+*.cer
+
+### Sistema Operacional ###
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+### Arquivos Temporários ###
+*.class
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+hs_err_pid*
+replay_pid*
+
+### Documentação Gerada ###
+/docs/build/
+/javadoc/
+
+### Cache e Dependências ###
+.npm
+.node_modules/
+node_modules/
+.yarn/
+.pnp.*
+
+### IDEs e Ferramentas ###
+*.sublime-project
+*.sublime-workspace
+.metals/
+.bloop/
+project/metals.sbt
+
+### CI/CD ###
+.github/workflows/secrets.yml
+.gitlab-ci-local/
+
+### Docker (se usar) ###
+docker-compose.override.yml
+.dockerignore
+
+### Outros ###
+*.orig
+.attach_pid*
+.java-version
