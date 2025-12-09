@@ -2,6 +2,7 @@ package com.thiago.abandonedcode.domain.entities;
 
 import com.thiago.abandonedcode.domain.enums.PostStatus;
 import com.thiago.abandonedcode.domain.valueobjects.Content;
+import com.thiago.abandonedcode.domain.valueobjects.Excerpt;
 import com.thiago.abandonedcode.domain.valueobjects.Slug;
 import com.thiago.abandonedcode.domain.valueobjects.ViewCount;
 
@@ -12,7 +13,7 @@ public class Post {
     private Long id;
     private String title;
     private Content content;
-    private String excerpt;
+    private Excerpt excerpt;
     private ViewCount viewCount;
     private Slug slug;
     private String featureImage;
@@ -22,7 +23,7 @@ public class Post {
     private LocalDateTime updatedAt;
     private LocalDateTime publishedAt;
 
-    public Post(String title, Content content, String excerpt, Category category) {
+    public Post(String title, Content content, Excerpt excerpt, Category category) {
         this.title = title;
         this.content = content;
         this.excerpt = excerpt;
@@ -46,7 +47,7 @@ public class Post {
         this.viewCount = this.viewCount.increment();
     }
 
-    public void update(String title, Content content, String excerpt) {
+    public void update(String title, Content content, Excerpt excerpt) {
         this.title = title;
         this.content = content;
         this.excerpt = excerpt;
@@ -66,56 +67,28 @@ public class Post {
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
     public Content getContent() {
         return content;
     }
 
-    public void setContent(Content content) {
-        this.content = content;
-    }
-
-    public String getExcerpt() {
+    public Excerpt getExcerpt() {
         return excerpt;
-    }
-
-    public void setExcerpt(String excerpt) {
-        this.excerpt = excerpt;
     }
 
     public ViewCount getViewCount() {
         return viewCount;
     }
 
-    public void setViewCount(ViewCount viewCount) {
-        this.viewCount = viewCount;
-    }
-
     public Slug getSlug() {
         return slug;
-    }
-
-    public void setSlug(Slug slug) {
-        this.slug = slug;
     }
 
     public String getFeatureImage() {
         return featureImage;
     }
 
-    public void setFeatureImage(String featureImage) {
-        this.featureImage = featureImage;
-    }
-
     public PostStatus getStatus() {
         return status;
-    }
-
-    public void setStatus(PostStatus status) {
-        this.status = status;
     }
 
     public Category getCategory() {
@@ -130,23 +103,11 @@ public class Post {
         return createdAt;
     }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
     public LocalDateTime getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
     public LocalDateTime getPublishedAt() {
         return publishedAt;
-    }
-
-    public void setPublishedAt(LocalDateTime publishedAt) {
-        this.publishedAt = publishedAt;
     }
 }

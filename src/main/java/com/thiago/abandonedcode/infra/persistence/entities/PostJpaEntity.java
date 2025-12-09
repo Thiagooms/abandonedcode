@@ -27,13 +27,13 @@ public class PostJpaEntity {
     @Column(columnDefinition = "TEXT")
     private String excerpt;
 
-    @Column(name = "view-count", nullable = false)
+    @Column(name = "view_count", nullable = false)
     private Long viewCount = 0L;
 
     @Column(nullable = false, unique = true)
     private String slug;
 
-    @Column(name = "feature-imagem")
+    @Column(name = "feature_image")
     private String featureImage;
 
     @Enumerated(EnumType.STRING)

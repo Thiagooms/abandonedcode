@@ -6,7 +6,7 @@ import java.util.Locale;
 public record Slug(String value){
     public static Slug fromTitle(String title){
         String normalized = Normalizer.normalize(title,Normalizer.Form.NFD)
-                .replaceAll("[^\\\\p{ASCII}]\"", "")
+                .replaceAll("[^\\p{ASCII}]", "")
                 .toLowerCase(Locale.ROOT)
                 .trim()
                 .replaceAll("\\s+", "-")
