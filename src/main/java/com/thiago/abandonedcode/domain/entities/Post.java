@@ -34,6 +34,10 @@ public class Post {
         this.createdAt = LocalDateTime.now();
     }
 
+    public Post(String title, Content content, Excerpt excerpt) {
+        this(title, content, excerpt, null);
+    }
+
     public void publish() {
         if (this.status == PostStatus.PUBLISHED) {
             throw new IllegalStateException("Post já foi publicado");

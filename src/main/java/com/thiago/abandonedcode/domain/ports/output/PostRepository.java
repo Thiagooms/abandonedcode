@@ -1,4 +1,4 @@
-package com.thiago.abandonedcode.domain.gateway;
+package com.thiago.abandonedcode.domain.ports.output;
 
 import com.thiago.abandonedcode.domain.entities.Post;
 import com.thiago.abandonedcode.domain.enums.PostStatus;
@@ -7,7 +7,7 @@ import com.thiago.abandonedcode.domain.valueobjects.Slug;
 import java.util.List;
 import java.util.Optional;
 
-public interface PostGateway {
+public interface PostRepository {
 
     Post save(Post post);
 
