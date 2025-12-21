@@ -9,7 +9,6 @@ import com.thiago.abandonedcode.domain.valueobjects.ViewCount;
 import java.time.LocalDateTime;
 
 public class Post {
-
     private Long id;
     private String title;
     private Content content;
@@ -87,6 +86,10 @@ public class Post {
         return slug;
     }
 
+    public void setSlug(Slug slug){
+        this.slug = slug;
+    }
+
     public String getFeatureImage() {
         return featureImage;
     }
@@ -113,5 +116,29 @@ public class Post {
 
     public LocalDateTime getPublishedAt() {
         return publishedAt;
+    }
+
+    public void setViewCount(ViewCount viewCount) {
+        this.viewCount = viewCount;
+    }
+
+    public void setStatus(PostStatus status) {
+        this.status = status;
+    }
+
+    public void setFeatureImage(String featureImage) {
+        this.featureImage = featureImage;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public void setPublishedAt(LocalDateTime publishedAt) {
+        this.publishedAt = publishedAt;
     }
 }
