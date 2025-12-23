@@ -38,7 +38,9 @@ public class CategoryJpaMapper {
 
         CategoryJpaEntity entity = new CategoryJpaEntity();
 
-        entity.setId(category.getId());
+        if (category.getId() != null) {
+            entity.setId(category.getId());
+        }
         entity.setName(category.getName());
         entity.setSlug(category.getSlug().value());
         entity.setCreatedAt(category.getCreatedAt());

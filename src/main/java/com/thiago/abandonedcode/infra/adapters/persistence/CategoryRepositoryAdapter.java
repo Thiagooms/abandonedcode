@@ -5,11 +5,13 @@ import com.thiago.abandonedcode.domain.ports.output.CategoryRepository;
 import com.thiago.abandonedcode.infra.persistence.entities.CategoryJpaEntity;
 import com.thiago.abandonedcode.infra.persistence.mappers.CategoryJpaMapper;
 import com.thiago.abandonedcode.infra.persistence.repositories.CategoryJpaRepository;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+@Component
 public class CategoryRepositoryAdapter implements CategoryRepository{
 
     private final CategoryJpaRepository jpaRepository;

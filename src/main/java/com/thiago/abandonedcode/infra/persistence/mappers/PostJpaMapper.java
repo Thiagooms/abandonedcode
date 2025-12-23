@@ -38,6 +38,7 @@ public class PostJpaMapper {
                 category
         );
 
+        post.setId(entity.getId());
         post.setSlug(new Slug(entity.getSlug()));
         post.setViewCount(new ViewCount(entity.getViewCount()));
         post.setStatus(entity.getStatus());
@@ -56,7 +57,9 @@ public class PostJpaMapper {
 
         PostJpaEntity entity = new PostJpaEntity();
 
-        entity.setId(post.getId());
+        if (post.getId() != null) {
+            entity.setId(post.getId());
+        }
         entity.setTitle(post.getTitle());
         entity.setFeatureImage(post.getFeatureImage());
         entity.setStatus(post.getStatus());
