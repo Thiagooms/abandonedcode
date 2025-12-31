@@ -22,19 +22,20 @@ public class Post {
     private LocalDateTime updatedAt;
     private LocalDateTime publishedAt;
 
-    public Post(String title, Content content, Excerpt excerpt, Category category) {
+    public Post(String title, Content content, String featureImage, Category category) {
         this.title = title;
         this.content = content;
-        this.excerpt = excerpt;
+        this.excerpt = Excerpt.fromContent(content);
         this.slug = Slug.fromTitle(title);
         this.viewCount = ViewCount.zero();
+        this.featureImage = featureImage;
         this.status = PostStatus.DRAFT;
         this.category = category;
         this.createdAt = LocalDateTime.now();
     }
 
-    public Post(String title, Content content, Excerpt excerpt) {
-        this(title, content, excerpt, null);
+    public Post(String title, Content content) {
+        this(title, content, null, null);
     }
 
     public void publish() {
@@ -50,10 +51,10 @@ public class Post {
         this.viewCount = this.viewCount.increment();
     }
 
-    public void update(String title, Content content, Excerpt excerpt) {
+    public void update(String title, Content content) {
         this.title = title;
         this.content = content;
-        this.excerpt = excerpt;
+        this.excerpt = Excerpt.fromContent(content);
         this.slug = Slug.fromTitle(title);
         this.updatedAt = LocalDateTime.now();
     }
