@@ -34,6 +34,10 @@ public class Post {
         this.createdAt = LocalDateTime.now();
     }
 
+    public Post(String title, Content content, Category category) {
+        this(title, content, null, category);
+    }
+
     public Post(String title, Content content) {
         this(title, content, null, null);
     }
