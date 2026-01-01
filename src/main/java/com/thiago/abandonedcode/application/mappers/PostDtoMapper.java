@@ -18,7 +18,7 @@ public class PostDtoMapper {
             post.getFeatureImage(),
             post.getStatus().name(),
             post.getCategory() != null ?
-            CategoryDtoMapper.toResponse(post.getCategory()) : null,
+            CategoryDtoMapper.toResponse(post.getCategory(), null, null) : null,
             post.getCreatedAt(),
             post.getUpdatedAt(),
             post.getPublishedAt()

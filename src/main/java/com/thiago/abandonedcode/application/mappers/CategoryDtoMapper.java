@@ -24,12 +24,4 @@ public class CategoryDtoMapper {
                 category.getUpdatedAt()
         );
     }
-
-    public static CategoryResponse toResponse(Category category, String parentName) {
-        return toResponse(category, parentName, null);
-    }
-
-    public static CategoryResponse toResponse(Category category) {
-        return toResponse(category, null, null);
-    }
 }
