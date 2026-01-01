@@ -25,7 +25,7 @@ public class CategoryJpaEntity {
     @Column(nullable = false)
     private String name;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String slug;
 
     @ManyToOne(fetch = FetchType.LAZY)

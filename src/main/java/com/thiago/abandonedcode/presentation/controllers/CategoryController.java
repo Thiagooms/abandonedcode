@@ -55,7 +55,15 @@ public class CategoryController {
                 request.parentId()
         );
 
-        CategoryResponse response = CategoryDtoMapper.toResponse(category);
+        String parentName = null;
+        if (category.getParentId() != null) {
+            parentName = categoryRepository.findById(category.getParentId())
+                    .map(Category::getName)
+                    .orElse(null);
+        }
+
+        String fullPath = categoryRepository.buildFullPath(category.getId());
+        CategoryResponse response = CategoryDtoMapper.toResponse(category, parentName, fullPath);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
@@ -63,7 +71,16 @@ public class CategoryController {
     public ResponseEntity<List<CategoryResponse>> listAll() {
         List<Category> categories = listCategoriesUseCase.execute();
         List<CategoryResponse> responses = categories.stream()
-                .map(CategoryDtoMapper::toResponse)
+                .map(category -> {
+                    String parentName = null;
+                    if (category.getParentId() != null) {
+                        parentName = categoryRepository.findById(category.getParentId())
+                                .map(Category::getName)
+                                .orElse(null);
+                    }
+                    String fullPath = categoryRepository.buildFullPath(category.getId());
+                    return CategoryDtoMapper.toResponse(category, parentName, fullPath);
+                })
                 .toList();
         return ResponseEntity.ok(responses);
     }
@@ -71,7 +88,16 @@ public class CategoryController {
     @GetMapping("/{id}")
     public ResponseEntity<CategoryResponse> getById(@PathVariable Long id) {
         Category category = getCategoryUseCase.execute(id);
-        CategoryResponse response = CategoryDtoMapper.toResponse(category);
+
+        String parentName = null;
+        if (category.getParentId() != null) {
+            parentName = categoryRepository.findById(category.getParentId())
+                    .map(Category::getName)
+                    .orElse(null);
+        }
+
+        String fullPath = categoryRepository.buildFullPath(category.getId());
+        CategoryResponse response = CategoryDtoMapper.toResponse(category, parentName, fullPath);
         return ResponseEntity.ok(response);
     }
 
@@ -85,7 +111,16 @@ public class CategoryController {
                 request.name(),
                 request.parentId()
         );
-        CategoryResponse response = CategoryDtoMapper.toResponse(category);
+
+        String parentName = null;
+        if (category.getParentId() != null) {
+            parentName = categoryRepository.findById(category.getParentId())
+                    .map(Category::getName)
+                    .orElse(null);
+        }
+
+        String fullPath = categoryRepository.buildFullPath(category.getId());
+        CategoryResponse response = CategoryDtoMapper.toResponse(category, parentName, fullPath);
         return ResponseEntity.ok(response);
     }
 
@@ -95,11 +130,19 @@ public class CategoryController {
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping("/{path:**}")
+    @GetMapping("/{*path}")
     public ResponseEntity<CategoryResponse> getByPath(@PathVariable String path) {
         Category category = getCategoryByPathUseCase.execute(path);
+
+        String parentName = null;
+        if (category.getParentId() != null) {
+            parentName = categoryRepository.findById(category.getParentId())
+                    .map(Category::getName)
+                    .orElse(null);
+        }
+
         String fullPath = categoryRepository.buildFullPath(category.getId());
-        CategoryResponse response = CategoryDtoMapper.toResponse(category, null, fullPath);
+        CategoryResponse response = CategoryDtoMapper.toResponse(category, parentName, fullPath);
         return ResponseEntity.ok(response);
     }
 }

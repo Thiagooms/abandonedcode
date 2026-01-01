@@ -9,6 +9,11 @@ import java.util.Optional;
 public interface CategoryJpaRepository extends JpaRepository<CategoryJpaEntity, Long> {
 
     Optional<CategoryJpaEntity> findBySlug(String slug);
+    Optional<CategoryJpaEntity> findBySlugAndParentIdIsNull(String slug);
+    Optional<CategoryJpaEntity> findBySlugAndParentId(String slug, Long parentId);
+    boolean existsBySlugAndParentId(String slug, Long parentId);
+
     List<CategoryJpaEntity> findByParentId(Long parentId);
+
     boolean existsBySlug(String slug);
 }
