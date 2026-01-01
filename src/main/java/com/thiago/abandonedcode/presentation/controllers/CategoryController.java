@@ -11,6 +11,8 @@ import com.thiago.abandonedcode.domain.ports.input.UpdateCategoryUseCase;
 import com.thiago.abandonedcode.domain.ports.output.CategoryRepository;
 import com.thiago.abandonedcode.presentation.dto.CategoryRequest;
 import com.thiago.abandonedcode.presentation.dto.CategoryResponse;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +22,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/categories")
+@Tag(name = "Categories", description = "Gerenciamento de categorias hierárquicas")
 public class CategoryController {
 
     private final CreateCategoryUseCase createCategoryUseCase;
@@ -49,6 +52,7 @@ public class CategoryController {
     }
 
     @PostMapping
+    @Operation(summary = "Criar nova categoria", description = "Cria uma nova categoria com validação de hierarquia (máx 3 níveis)")
     public ResponseEntity<CategoryResponse> create(@Valid @RequestBody CategoryRequest request) {
         Category category = createCategoryUseCase.execute(
                 request.name(),
@@ -68,6 +72,7 @@ public class CategoryController {
     }
 
     @GetMapping
+    @Operation(summary = "Listar todas as categorias", description = "Retorna todas as categorias com parentName e fullPath preenchidos")
     public ResponseEntity<List<CategoryResponse>> listAll() {
         List<Category> categories = listCategoriesUseCase.execute();
         List<CategoryResponse> responses = categories.stream()
@@ -131,6 +136,7 @@ public class CategoryController {
     }
 
     @GetMapping("/{*path}")
+    @Operation(summary = "Buscar categoria por path hierárquico", description = "Exemplo: /api/categories/java/interfaces")
     public ResponseEntity<CategoryResponse> getByPath(@PathVariable String path) {
         Category category = getCategoryByPathUseCase.execute(path);
 
