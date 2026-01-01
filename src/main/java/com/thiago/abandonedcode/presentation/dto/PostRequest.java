@@ -12,8 +12,6 @@ public record PostRequest(
     @NotBlank(message = "Conteúdo não pode ser vazio")
     String content,
 
-    String excerpt,
-
     Long categoryId,
 
     String featureImage

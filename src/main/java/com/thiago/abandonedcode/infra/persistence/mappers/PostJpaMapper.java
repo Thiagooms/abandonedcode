@@ -3,7 +3,6 @@ package com.thiago.abandonedcode.infra.persistence.mappers;
 import com.thiago.abandonedcode.domain.entities.Category;
 import com.thiago.abandonedcode.domain.entities.Post;
 import com.thiago.abandonedcode.domain.valueobjects.Content;
-import com.thiago.abandonedcode.domain.valueobjects.Excerpt;
 import com.thiago.abandonedcode.domain.valueobjects.Slug;
 import com.thiago.abandonedcode.domain.valueobjects.ViewCount;
 import com.thiago.abandonedcode.infra.persistence.entities.CategoryJpaEntity;
@@ -29,12 +28,10 @@ public class PostJpaMapper {
             category = categoryJpaMapper.toDomain(entity.getCategory());
         }
         Content content = new Content(entity.getContent());
-        Excerpt excerpt = new Excerpt(entity.getExcerpt());
 
         Post post = new Post(
                 entity.getTitle(),
                 content,
-                excerpt,
                 category
         );
 
