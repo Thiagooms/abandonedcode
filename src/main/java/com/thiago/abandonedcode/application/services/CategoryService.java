@@ -6,6 +6,7 @@ import com.thiago.abandonedcode.domain.exceptions.DuplicateSlugException;
 import com.thiago.abandonedcode.domain.exceptions.InvalidDomainStateException;
 import com.thiago.abandonedcode.domain.ports.input.CreateCategoryUseCase;
 import com.thiago.abandonedcode.domain.ports.input.DeleteCategoryUseCase;
+import com.thiago.abandonedcode.domain.ports.input.GetCategoryByPathUseCase;
 import com.thiago.abandonedcode.domain.ports.input.GetCategoryUseCase;
 import com.thiago.abandonedcode.domain.ports.input.ListCategoriesUseCase;
 import com.thiago.abandonedcode.domain.ports.input.UpdateCategoryUseCase;
@@ -13,7 +14,7 @@ import com.thiago.abandonedcode.domain.ports.output.CategoryRepository;
 
 import java.util.List;
 
-public class CategoryService implements CreateCategoryUseCase, ListCategoriesUseCase, GetCategoryUseCase, UpdateCategoryUseCase, DeleteCategoryUseCase {
+public class CategoryService implements CreateCategoryUseCase, ListCategoriesUseCase, GetCategoryUseCase, UpdateCategoryUseCase, DeleteCategoryUseCase, GetCategoryByPathUseCase {
 
     private final CategoryRepository categoryRepository;
 
@@ -95,5 +96,16 @@ public class CategoryService implements CreateCategoryUseCase, ListCategoriesUse
         Category category = categoryRepository.findById(id)
                 .orElseThrow(() -> CategoryNotFoundException.withId(id));
         categoryRepository.deleteById(id);
+    }
+
+    @Override
+    public Category execute(String path) {
+        if (path == null || path.isBlank()) {
+            throw new IllegalArgumentException("Path não pode ser vazio");
+        }
+
+        String[] slugs = path.split("/");
+        return categoryRepository.findByPath(slugs)
+                .orElseThrow(() -> CategoryNotFoundException.withPath(path));
     }
 }

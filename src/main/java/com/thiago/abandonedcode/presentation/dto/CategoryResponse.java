@@ -8,6 +8,7 @@ public record CategoryResponse(
         String slug,
         Long parentId,
         String parentName,
+        String fullPath,
         LocalDateTime createdAt,
         LocalDateTime updatedAt
 ) {}

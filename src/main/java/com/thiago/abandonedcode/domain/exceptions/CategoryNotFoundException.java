@@ -13,4 +13,8 @@ public class CategoryNotFoundException extends DomainException {
     public static CategoryNotFoundException withSlug(String slug) {
         return new CategoryNotFoundException("Categoria com ID '" + slug + "' não encontrada");
     }
+
+    public static CategoryNotFoundException withPath(String path) {
+        return new CategoryNotFoundException("Categoria com path '" + path + "' não encontrada");
+    }
 }
