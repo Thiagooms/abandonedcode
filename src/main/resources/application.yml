@@ -3,9 +3,9 @@ spring:
     name: abandonedcode
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/abandonedcode
-    username: postgres
-    password: postgres
+    url: ${DATABASE_URL}
+    username: ${PG_USER}
+    password: ${PG_PASSWORD}
     driver-class-name: org.postgresql.Driver
 
   jpa:
