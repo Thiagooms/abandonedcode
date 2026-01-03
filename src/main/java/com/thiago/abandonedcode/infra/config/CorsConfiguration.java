@@ -10,7 +10,12 @@ public class CorsConfiguration implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/api/**")
-                .allowedOrigins("http://localhost:3000", "http://localhost:5174")
+                .allowedOrigins(
+                    "http://localhost:3000",
+                    "http://localhost:5174",
+                    "https://front-abandoned-code.vercel.app"
+                )
+                .allowedOriginPatterns("https://*-thiagooms-projects.vercel.app")
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS")
                 .allowedHeaders("*")
                 .allowCredentials(true)
