@@ -2,13 +2,16 @@ spring:
   application:
     name: abandonedcode
 
+  main:
+    lazy-initialization: true
+
   datasource:
     url: ${DATABASE_URL}
     driver-class-name: org.postgresql.Driver
     hikari:
-      maximum-pool-size: 5
-      minimum-idle: 2
-      connection-timeout: 30000
+      maximum-pool-size: 3
+      minimum-idle: 1
+      connection-timeout: 20000
       idle-timeout: 600000
       max-lifetime: 1800000
 
