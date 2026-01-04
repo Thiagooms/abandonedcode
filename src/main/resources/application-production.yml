@@ -2,9 +2,6 @@ spring:
   application:
     name: abandonedcode
 
-  main:
-    lazy-initialization: true
-
   datasource:
     url: ${DATABASE_URL}
     driver-class-name: org.postgresql.Driver
